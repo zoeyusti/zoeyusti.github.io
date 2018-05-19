@@ -6,7 +6,16 @@
 body{
 	
 	background-color: #FFFEAB;
-	position: relative;
+	display: flex;
+	width: 100%;
+}
+
+
+#memotest{
+	margin-left: 10px;
+	margin-top: 20px;
+	display: inline-block;
+	/*display: flex;*/
 }
 
 #memotest img{
@@ -16,11 +25,15 @@ body{
 	
 }
 
+
 .info{
 	float: right;
 	position: absolute;
 	right: 100px;
 	top: 100px;
+	/*justify-content: flex-end;
+	align-items:   flex-end;*/
+
 	color: #000750;
 	background-color: #F6B08D;
 	padding: 20px;
@@ -36,12 +49,15 @@ body{
 
 
 #jugar{
+	/*display: flex;*/
 	width: 100px;
 	height: 50px;
-	position: absolute;
+	/*position: absolute;
 	top: 250px;
-	left: 40%;
-	margin: 0 auto;
+	left: 40%;*/
+	justify-content: center;
+	/*align-content: space-around;*/
+	margin: 10em auto;
 	color: white;
 	font-size: 20px;
 	background: darkorange;
@@ -51,10 +67,6 @@ body{
 	border-width: 1px;
 }
 
-#memotest{
-	margin-left: 10px;
-	margin-top: 20px;
-}
 
 #nameJugador{
 	margin: 10px;
@@ -71,4 +83,17 @@ body{
 	border-width: 1px;
 	border-radius: 5px;
 	color: white;
+}
+
+@media (max-width: 1070px) {
+
+	.info{
+		position: absolute;
+		top: 600px;
+		width: 600px;
+		margin: 10px;
+
+		
+	}
+	
 }
