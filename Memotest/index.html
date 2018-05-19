@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>memo</title>
+	<link rel="icon" type="image/png" href="imgs/favicon-32x32.png" sizes="32x32" />
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	
+</head>
+	
+
+<body>
+	
+	<button type="button" id="jugar" onclick='jugar()'>Jugar</button>
+
+		<div id="memotest" style="display:none;">
+			<table border="0">
+				<tr>
+					<td><img src="imgs/back.png" id="0" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="1" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="2" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="3" onclick='imgcheck(this)'/></td>
+					
+				</tr>
+				<tr>
+
+					
+					<td><img src="imgs/back.png" id="4" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="5" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="6" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="7" onclick='imgcheck(this)'/></td>
+					
+				</tr>
+				<tr>						
+					
+					<td><img src="imgs/back.png" id="8" onclick='imgcheck(this)'/></td>			
+					<td><img src="imgs/back.png" id="9" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="10" onclick='imgcheck(this)'/></td>
+					<td><img src="imgs/back.png" id="11" onclick='imgcheck(this)'/></td>
+				</tr>		
+			
+			</table>
+			
+			<div class="info">
+				<h2>Juego de la memoria</h2>
+				<h3>Jugador: </h3>
+				<input type="text" placeholder="Nombre Jugador" id="name" onkeyup="cargarNombre()">
+				<input type="button" id="nameok" value="OK" onclick="cargarNombre()">
+				<div id="nameJugador"></div>
+				<h4>Instrucciones: </h4>
+				<p>Haz click en una ficha</p>
+				<p>Busca su compañera</p>
+				<p>Forma todos los pares que puedas en la menor cantidad de pasos</p>
+				<p>A disfrutar del juego!</p>
+			</div>
+
+
+		</div>	
+	<script src="js/memotest.js" type="text/javascript"></script>
+</body>
+
+
+</html>
