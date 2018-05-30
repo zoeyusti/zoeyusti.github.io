@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+	
+	background-color: #FFFEAB;
+	position: relative;
+}
+
+#memotest img{
+	width:200px;
+	height: 150px;
+	margin: 10px;
+	
+}
+
+.info{
+	float: right;
+	position: absolute;
+	right: 100px;
+	top: 100px;
+	color: #000750;
+	background-color: #F6B08D;
+	padding: 20px;
+	border-radius: 10px;
+	width: 300px;
+
+
+}
+.info p, h2, h3, h4, input{
+	margin: 10px;
+}
+
+
+
+#jugar{
+	width: 100px;
+	height: 50px;
+	position: absolute;
+	top: 250px;
+	left: 40%;
+	margin: 0 auto;
+	color: white;
+	font-size: 20px;
+	background: darkorange;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+}
+
+#memotest{
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+#nameJugador{
+	margin: 10px;
+	font-weight: bold;
+	color: indigo;
+	font-size: 30px;
+}
+
+#nameok{
+	padding: 5px;
+	background-color: darkorange;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	border-radius: 5px;
+	color: white;
+}
+
+@media (max-width: 1070px) {
+
+	.info{
+		position: absolute;
+		top: 600px;
+		width: 600px;
+		margin: 10px;
+
+		
+	}
+	
+}
