@@ -8,6 +8,10 @@ var intentos=0;
 var score=0;
 var MAX_INTENTOS = 20;
 
+var infoJugadores = {};
+var Jugadores = [];
+var datos = localStorage.getItem('Jugadores');
+
 
 
 
@@ -105,6 +109,7 @@ function imgcheck(imagen){
 				changeimages(prim)}, 700);
 				intentos++;		
 				document.getElementById('instrucciones').innerHTML = "Intentos: " +intentos+ " de " +MAX_INTENTOS;
+				
 			}
 		}
 
@@ -122,14 +127,23 @@ function imgcheck(imagen){
 		console.log(total);
 		console.log("intentos " + intentos);
 		
+		
 	
 	}
 	if (total==6){
-			hacerRanking();
+	
 			setTimeout(function() {alert("FELICIDADES!! No te ganaste nada, solo el derecho de decir que ganaste");}, 300);
 			setTimeout(function(){location.reload();}, 700);
+
+			guardarInformacion();
+			hacerRanking();
 		}
+
+
+
+
 }
+
 
 
 var changeimages = function(imagen){
@@ -137,80 +151,54 @@ var changeimages = function(imagen){
 	imagen.src = path+"back.png";
 }		
 
+
+
+function guardarInformacion(){
+	var puntaje = 100 - intentos;
+	var nombres = document.getElementById('name').value;
+    infoJugadores = {name: nombres, score: puntaje}
+    console.log(infoJugadores);
+
+    if(datos==null){
+        Jugadores = [];
+    }else{
+        Jugadores = JSON.parse(datos).Jugadores; 
+    }
+    console.log(datos);
+    Jugadores.push(infoJugadores);
+    Jugadores.sort(function(a,b){
+    	return b.score - a.score; //Gracias por existir funcion que me ayuda a ordenar
+    });
+
+    let JASONhelpme = {'Jugadores':Jugadores,'total':Jugadores.length}
+    console.log(JASONhelpme); //Jason cumple, Jason para presidente
+
+    let informacion = JSON.stringify(JASONhelpme);
+    
+    localStorage.setItem('Jugadores', informacion);
+
+    console.log(Jugadores);
+    console.log("puntaje "+puntaje);
+    
+
+}
+
+
+
 function hacerRanking(){
-	if (typeof (Storage) !== "undefined") {
-
-		var nombres = document.getElementById('name').value;
-
-	    var highscore = {
-	        "Jugador": nombres,
-	        "Intentos": intentos,
-	        };
-
-	    localStorage.setItem('highscore', highscore);
-
-	    document.getElementById("ranking").innerHTML = highscore.Intentos;
-	}
-}
-
-//ACA VAMOS A INTENTAR LO DEL HIGHSCORE
-
-/*function HighScores() {
-	if(typeof(Storage)!=="undefined"){
-		var scores = false;
-		if(localStorage["high-scores"]){
-			high_scores.style.display = "block";
-			high_scores.innerHTML = '';
-			scores = JSON.parse(localStorage["high-scores"]);
-			scores = scores.sort(function(a,b){return parseInt(b)-parseInt(a)});
-
-			for (var i = 0; i < 10; i++){
-				var s = scores[i];
-				var fragment = document.createElement('li');
-				fragment.innerHTML = (typeof(s) != "undefined" ? s : "");
-				high_scores.appendChild(fragment);
-			}
+	$(function(){
+		for (var i = 0; i < Jugadores.length; i++) {
+			let nameRanking = `<li> ${Jugadores[i].name} ${Jugadores[i].score} </li>`
+			//let scoreRanking = Jugadores[i].score;
+			//señor dame paciencia
+			$("#ranking").append(nameRanking);
 		}
-	} else {
-		high_scores.style.display = "none";
-	}
+	});
 }
 
-function updateScore() {
-	if(typeof(Storage)!=="undefined"){
-		var current = parseInt(score.innerHTML);
-		var scores = false;
-		if (localStorage["high-scores"]) {
 
-			scores = JSON.parse(localStorage["high-scores"]);
-			scores = scores.sort(function(a,b){return parseInt(b)-parseInt(a)});
 
-			for (var i = 0; i < 10; i++){
-				var s = parseInt(scores[i]);
-
-				var val = (!isNan(s) ? s : 0);
-				if(current > val){
-					val = current;
-					scores.splice(i, 0, parseInt(current));
-					break;
-				}
-			}
-
-			scores.length = 10;
-			localStorage["high-scores"] = JSON.stringify(scores);
-		} else{
-			var scores = new Array();
-			scores[0] = current;
-			localStorage["high-scores"] = JSON.stringify(scores);
-		}
-
-		HighScores();
-	}
-}
-*/
 crearImagenes();
-/*
-HighScores();
 
-updateScore();*/
 
+//localStorage.clear();
